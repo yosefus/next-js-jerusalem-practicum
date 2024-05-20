@@ -1,8 +1,20 @@
+import { unstable_noStore } from 'next/cache'
+import { cookies, headers } from 'next/headers'
 import Link from 'next/link'
 import React from 'react'
 
+
+// export const dynamic = 'force-dynamic'
+// export const revalidate = 3600 // revalidate at most every hour
+
 export default async function Post() {
-   const res = await fetch("https://jsonplaceholder.typicode.com/posts", { next: { revalidate: 30 } })
+   // unstable_noStore()
+   // const h = headers()
+   // const c = cookies()
+
+   // const res = await fetch("https://jsonplaceholder.typicode.com/posts", { next: { revalidate: 30 } })
+   // const res = await fetch("https://jsonplaceholder.typicode.com/posts", {  cache: 'force-cache'})
+   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {  cache: 'no-store'})
    const posts = await res.json()
    const date = new Date().toISOString().slice(0, 19)
 

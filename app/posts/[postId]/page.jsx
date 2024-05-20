@@ -4,7 +4,6 @@ export const generateStaticParams = async () => {
    const res = await fetch(`https://jsonplaceholder.typicode.com/posts`)
    const posts = await res.json()
    return posts.filter((post, i) => i <= 10).map((post) => ({ postId: String(post.id) }))
-   // [ {postId: '1'}, {postId: '2'} ]
 }
 
 
